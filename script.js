@@ -7,7 +7,7 @@ let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 let special = ['+', '-', '&', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':']
 
 function generatePassword() {
-    let length = prompt('how many characters would you like your password to be?')
+    let length = prompt('how many characters would you like your password to be (8-128 char?)')
     let upperChoice = confirm('Do you want any uppercase values?')
     let lowerChoice = confirm('Do you want any lower case values?')
     let numberChoice = confirm('Do you want any numbers included?')
