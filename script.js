@@ -12,47 +12,50 @@ function generatePassword() {
     let lowerChoice = confirm('Do you want any lower case values?')
     let numberChoice = confirm('Do you want any numbers included?')
     let specialChoice = confirm('Do you want any special characters included?')
+    let userselections = []
     let password = ''
 
+
     if (upperChoice) {
-        for (i = 0; i < length; i++) {
-            password += upperCase[Math.floor(Math.random() * upperCase.length)] 
-            console.log(i)
-        }
-    }
-    else if (lowerChoice) {
-        for (i = 0; i < length; i++) {
-            password += lowerCase[Math.floor(Math.random() * lowerCase.length)] 
-            console.log(i)
-        }
-    }
-    else if (numberChoice) {
-        for (i = 0; i < length; i++) {
-            password += numbers[Math.floor(Math.random() * numbers.length)] 
-            console.log(i)
-        }
-    }
-    else if (specialChoice) {
-        for (i = 0; i < length; i++) {
-            password += special[Math.floor(Math.random() * special.length)]
-            console.log(i)
-        } 
-    }
-        return password
+        userselections.push(upperCase)
+        console.log(userselections[0])
     }
 
-
-
-
-
-    // Write password to the #password input
-    function writePassword() {
-        var password = generatePassword();
-        var passwordText = document.querySelector("#password");
-
-        passwordText.value = password;
+    if (lowerChoice) {
+        userselections.push(lowerCase)
+        console.log(userselections)
+    }
+    if (numberChoice) {
+        userselections.push(numbers)
+        console.log(userselections)
 
     }
+    if (specialChoice) {
+        userselections.push(special)
+        console.log(userselections)
+    }
+    for (i = 0; i < length; i++) {
+        var firstindex = Math.floor(Math.random() * userselections.length)
+        var secondindex = Math.floor(Math.random() * userselections[firstindex].length)
+        console.log(userselections[firstindex][secondindex])
+        password += userselections[firstindex][secondindex]
+        // console.log(i)
+    }
+    return password
+}
 
-    // Add event listener to generate button
-    generateBtn.addEventListener("click", writePassword);
+
+
+
+
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
